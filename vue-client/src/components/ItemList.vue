@@ -1,22 +1,18 @@
 <template>
   <div class='item-list'>
-		<div v-if="category && category.path_from_root" class="breadcrumb-container">
-			<span v-for="breadcrumb in category.path_from_root" :key="breadcrumb.id">
-				<span class="breadcrumb-name">{{ breadcrumb.name }}</span>
-				<span v-if="category.path_from_root.indexOf(breadcrumb) < category.path_from_root.length - 1" class="breadcrumb-separator">></span>
-			</span>
-		</div>
+		<Breadcrumb :category="category" />
 
 		<ItemCard v-for="item in items" :key="item.id" :item="item" />
   </div>
 </template>
 
 <script>
-import ItemCard from '@/components/ItemCard.vue'
+import Breadcrumb from '@/components/Breadcrumb.vue';
+import ItemCard from '@/components/ItemCard.vue';
 
 export default {
   name: 'ItemList',
-	components: { ItemCard },
+	components: { Breadcrumb, ItemCard },
 	props: {
 		items: {
 			type: Array,
@@ -32,7 +28,8 @@ export default {
 
 <style scoped lang="scss">
 .item-list {
-	width: 1024px;
+	width: 100%;
+	max-width: 1024px;
 	margin: 0 auto;
 	.breadcrumb-container {
 		padding: 10px;

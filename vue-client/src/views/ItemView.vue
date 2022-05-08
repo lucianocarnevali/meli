@@ -1,16 +1,18 @@
 <template>
   <div class="item">
-
+		<Item :item="item" :category="category" />
   </div>
 </template>
 
 <script>
+import Item from '@/components/Item.vue';
 
 export default {
   name: 'ItemView',
+	components: { Item },
   data() {
     return {
-      items: [],
+      item: {},
       category: {}
     }
   },
@@ -19,28 +21,23 @@ export default {
 		const itemId = this.$route.params.itemId;
 		if (itemId) {
 			console.log('itemId', itemId);
+			this.getItem(itemId);
 		}
 		
   },
 
   methods: {
-    async searchItems(queryParams) {
+    async getItem(itemId) {
       this.items = [];
       this.category = {};
       try {
-        const resItemList = await this.$http.items.getItems(queryParams);
-        console.log(resItemList.data);
-
-        const categoryId = resItemList.data.categories.reduce((previous, current, i, arr) =>
-          arr.filter(item => item === previous).length >
-          arr.filter(item => item === current).length
-            ? previous
-            : current
-        );
+        const resItem = await this.$http.items.getItem(itemId);
+        console.log(resItem.data);
+				const categoryId = resItem.data.item.category_id;
         const resCategory = await this.$http.categories.getCategory(categoryId);
         console.log(resCategory);
         this.category = resCategory.data.category;
-        this.items = resItemList.data.items;
+        this.item = resItem.data.item;
 
       } catch (err) {
 				console.error(err);
@@ -62,5 +59,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.item {
+	width: 100%;
+	max-width: 1024px;
+	margin: 0 auto;
+}
 </style>

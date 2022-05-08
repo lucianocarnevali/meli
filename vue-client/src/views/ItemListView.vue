@@ -27,7 +27,6 @@ export default {
       this.category = {};
       try {
         const resItemList = await this.$http.items.getItems(queryParams);
-        console.log(resItemList.data);
 
         const categoryId = resItemList.data.categories.reduce((previous, current, i, arr) =>
           arr.filter(item => item === previous).length >
@@ -36,7 +35,6 @@ export default {
             : current
         );
         const resCategory = await this.$http.categories.getCategory(categoryId);
-        console.log(resCategory);
         this.category = resCategory.data.category;
         this.items = resItemList.data.items;
 
@@ -60,5 +58,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.list {
+  width: 100%;
+	max-width: 1024px;
+	margin: 0 auto;
+}
 </style>

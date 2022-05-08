@@ -61,6 +61,7 @@ const getItemById = async (req, res, next) => {
 				item: {
 					id: item.id,
 					title: item.title,
+					category_id: item.category_id,
 					price: {
 						currency: item.currency_id,
 						amount: Math.trunc(item.price),
