@@ -2,7 +2,7 @@
   <div class="list">
     <SearchBox :query="$route.query.q ? $route.query.q : ''" />
 
-    <ItemList :items="items" />
+    <ItemList :items="items" :category="category" />
 
   </div>
 </template>
@@ -18,7 +18,8 @@ export default {
   },
   data() {
     return {
-      items: []
+      items: [],
+      category: {}
     }
   },
 
@@ -29,10 +30,22 @@ export default {
   methods: {
     async searchItems(queryParams) {
       this.items = [];
+      this.category = {};
       try {
-        const res = await this.$http.items.getItems(queryParams);
-        console.log(res.data);
-        this.items = res.data.items;
+        const resItemList = await this.$http.items.getItems(queryParams);
+        console.log(resItemList.data);
+
+        const categoryId = resItemList.data.categories.reduce((previous, current, i, arr) =>
+          arr.filter(item => item === previous).length >
+          arr.filter(item => item === current).length
+            ? previous
+            : current
+        );
+        const resCategory = await this.$http.categories.getCategory(categoryId);
+        console.log(resCategory);
+        this.category = resCategory.data.category;
+        this.items = resItemList.data.items;
+
       } catch (err) {
 				console.error(err);
 			}
