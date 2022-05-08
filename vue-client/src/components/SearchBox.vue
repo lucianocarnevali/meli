@@ -7,38 +7,18 @@
     <RouterLink  :to="{ name: 'ItemListView', query: { q: search, limit: limit }}" class="profile-link">
       <p>Buscar</p>
     </RouterLink>
-    <!-- <button type='submit' @click="handleSearch">Buscar</button> -->
   </div>
 </template>
 
 <script>
 export default {
   name: 'SearchBox',
-  props: {
-    query: {
-      type: String,
-      default: ''
-    }
-  },
-
   data() {
     return {
-      search: this.query,
+      search: '',
       limit: 4
     }
-  },
-
-  // methods: {
-  //   async handleSearch() {
-  //     console.log('on handleSearch');
-  //     try {
-	// 			const queryParams = `?q=${this.search}&limit=${this.limit}`;
-  //       this.$router.push({ name: 'ItemListView', params: { queryParams } });
-  //     } catch (err) {
-	// 			console.error(err);
-	// 		}
-  //   }
-  // }
+  }
 }
 </script>
 

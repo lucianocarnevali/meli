@@ -1,7 +1,11 @@
 <template>
-  <div class="home">
+	<div class="pageView">
     <SearchBox />
-  </div>
+
+		<transition name="page" mode="out-in" :duration="250">
+			<router-view></router-view>
+		</transition>
+	</div>
 </template>
 
 <script>

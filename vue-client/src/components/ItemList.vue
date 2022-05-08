@@ -7,16 +7,16 @@
 			</span>
 		</div>
 
-		<Item v-for="item in items" :key="item.id" :item="item" />
+		<ItemCard v-for="item in items" :key="item.id" :item="item" />
   </div>
 </template>
 
 <script>
-import Item from '@/components/Item.vue'
+import ItemCard from '@/components/ItemCard.vue'
 
 export default {
   name: 'ItemList',
-	components: { Item },
+	components: { ItemCard },
 	props: {
 		items: {
 			type: Array,

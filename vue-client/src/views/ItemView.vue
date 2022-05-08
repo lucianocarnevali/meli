@@ -1,15 +1,13 @@
 <template>
-  <div class="list">
-    <ItemList :items="items" :category="category" />
+  <div class="item">
+
   </div>
 </template>
 
 <script>
-import ItemList from '@/components/ItemList.vue'
 
 export default {
-  name: 'ItemListView',
-  components: { ItemList },
+  name: 'ItemView',
   data() {
     return {
       items: [],
@@ -18,7 +16,11 @@ export default {
   },
 
   created() {
-    this.handleRouteChange();
+		const itemId = this.$route.params.itemId;
+		if (itemId) {
+			console.log('itemId', itemId);
+		}
+		
   },
 
   methods: {

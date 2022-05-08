@@ -1,7 +1,9 @@
 <template>
   <div class='item-container'>
 		<div class="item-picture">
-			<img class='imagen-testimonio' :src="item.picture" />
+			<RouterLink  :to="{ name: 'ItemView', params: { itemId: item.id } }" class="profile-link">
+				<img class='imagen-testimonio' :src="item.picture" />
+			</RouterLink>
 		</div>
 		<div class="item-info">
 			<span>{{ item.price.currency }} {{ item.price.amount + item.price.decimals }}</span>
@@ -14,7 +16,7 @@
 
 <script>
 export default {
-  name: 'ItemList',
+  name: 'ItemCard',
 	props: {
 		item: {
 			type: Object,
