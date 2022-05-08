@@ -22,10 +22,14 @@ export default {
 <style scoped lang="scss">
 	.breadcrumb-container {
 		padding: 10px;
+		background-color: #ebebeb;
+
 		.breadcrumb-name{
+			background-color: #ebebeb;
 			padding: 5px;
 		}
 		.breadcrumb-separator{
+			background-color: #ebebeb;
 			padding: 5px;
 		}
 	}

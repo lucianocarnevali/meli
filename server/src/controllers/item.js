@@ -67,6 +67,7 @@ const getItemById = async (req, res, next) => {
 						amount: Math.trunc(item.price),
 						decimals: Number((item.price - Math.trunc(item.price)).toFixed(2))
 					},
+					sold_quantity: item.sold_quantity,
 					picture: item.thumbnail,
 					condition: item.condition,
 					free_shipping: item.shipping.free_shipping,

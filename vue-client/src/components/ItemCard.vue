@@ -1,8 +1,8 @@
 <template>
   <div class='item-container'>
-		<div class="item-picture">
+		<div class="item-picture-container">
 			<RouterLink  :to="{ name: 'ItemView', params: { itemId: item.id } }" class="profile-link">
-				<img class='imagen-testimonio' :src="item.picture" />
+				<img class='item-picture' :src="item.picture" />
 			</RouterLink>
 		</div>
 		<div class="item-info">
@@ -38,10 +38,10 @@ export default {
 	// box-shadow: 0 3px 13px 1px rgb(0 0 0 / 9%);
 	border-bottom: thin solid #eee;
 	background-color: white;
-	.item-picture {
+	.item-picture-container {
 		width: 160px;
 		height: 160px;
-		img {
+		.item-picture {
 			object-fit: contain;
 			width: 100%;
 		}

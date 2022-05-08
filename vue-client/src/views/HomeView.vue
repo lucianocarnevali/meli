@@ -1,5 +1,5 @@
 <template>
-	<div class="pageView">
+	<div class="home">
     <SearchBox />
 
 		<transition name="page" mode="out-in" :duration="250">
@@ -18,3 +18,10 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+.home {
+  width: 100%;
+	background-color: #ebebeb;
+}
+</style>

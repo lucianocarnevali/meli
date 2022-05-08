@@ -28,14 +28,17 @@ export default {
       try {
         const resItemList = await this.$http.items.getItems(queryParams);
 
-        const categoryId = resItemList.data.categories.reduce((previous, current, i, arr) =>
-          arr.filter(item => item === previous).length >
-          arr.filter(item => item === current).length
-            ? previous
-            : current
-        );
-        const resCategory = await this.$http.categories.getCategory(categoryId);
-        this.category = resCategory.data.category;
+        if (resItemList.data && resItemList.data.categories) {
+          const categoryId = resItemList.data.categories.reduce((previous, current, i, arr) =>
+            arr.filter(item => item === previous).length >
+            arr.filter(item => item === current).length
+              ? previous
+              : current
+          );
+          const resCategory = await this.$http.categories.getCategory(categoryId);
+          this.category = resCategory.data.category;
+        }
+
         this.items = resItemList.data.items;
 
       } catch (err) {
