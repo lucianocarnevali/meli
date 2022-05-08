@@ -19,12 +19,8 @@
 					{{ item.sold_quantity }} Vendidos
 				</div>
 				<div class="item-title"><h2>{{ item.title }}</h2></div>
-				<div v-if="item.price" class="item-price">
-				<span class="currency">{{ item.price.currency }}</span>
-				<span class="integer">{{ item.price.amount }}</span>
-				<span class="decimal">{{ item.price.decimals.toString().padStart(2, '0') }}</span>
+				<ItemPrice v-if="item.price" :price="item.price" />
 
-				</div>
 				<div class="item-buy">
 					<button class="button-buy">Comprar</button>
 				</div>
@@ -37,10 +33,11 @@
 
 <script>
 import Breadcrumb from '@/components/Breadcrumb.vue';
+import ItemPrice from '@/components/ItemPrice.vue';
 
 export default {
   name: 'ItemDetail',
-	components: { Breadcrumb },
+	components: { Breadcrumb, ItemPrice },
 	props: {
 		item: {
 			type: Object,
@@ -96,24 +93,6 @@ export default {
 			padding: 20px;
 			.item-condition{
 				padding: 5px 0;
-			}
-			.item-price{
-				display: flex;
-				font-size: 28px;
-				align-items: flex-start;
-				padding: 10px 0;
-				// font-weight: bold;
-				.currency{
-					padding-right: 5px;
-				}
-				.integer{
-					padding-right: 5px;
-				}
-				.decimal{
-					margin-top: 2px;
-					font-size: 15px;
-
-				}
 			}
 			.item-buy {
 				margin-top: 30px;

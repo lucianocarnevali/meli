@@ -1,22 +1,35 @@
 <template>
   <div class='item-container'>
 		<div class="item-picture-container">
-			<RouterLink  :to="{ name: 'ItemDetailView', params: { itemId: item.id } }" class="profile-link">
+			<RouterLink  :to="{ name: 'ItemDetailView', params: { itemId: item.id } }" class="picture-link">
 				<img class='item-picture' :src="item.picture" />
 			</RouterLink>
 		</div>
 		<div class="item-info">
-			<span>{{ item.price.currency }} {{ item.price.amount + item.price.decimals }}</span>
-			<span>{{ item.title }}</span>
+
+			<ItemPrice v-if="item.price" :price="item.price" />
+
+			
+			<RouterLink :to="{ name: 'ItemDetailView', params: { itemId: item.id } }" class="title-link">
+				<span>{{ item.title }}</span>
+			</RouterLink>
+			
+
 		</div>
-		<div class="item-location"></div>
+		<div class="item-location">
+			<span>{{ item.address.state_name }}</span>
+
+		</div>
 
   </div>
 </template>
 
 <script>
+import ItemPrice from '@/components/ItemPrice.vue';
+
 export default {
   name: 'ItemCard',
+	components: { ItemPrice },
 	props: {
 		item: {
 			type: Object,
@@ -46,8 +59,12 @@ export default {
 		}
 	}
 	.item-info{
-		// width: 70%;
+		width: 70%;
 		background-color: white;
+		.title-link{
+			text-decoration: none;
+			color: inherit;
+		}
 	}
 }
 </style>

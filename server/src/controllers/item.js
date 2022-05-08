@@ -21,6 +21,9 @@ const serachItems = async (req, res, next) => {
 						amount: Math.trunc(r.price),
 						decimals: Number((r.price - Math.trunc(r.price)).toFixed(2))
 					},
+					address: {
+						state_name: r.address.state_name
+					},
 					picture: r.thumbnail,
 					condition: r.condition,
 					free_shipping: r.shipping.free_shipping
