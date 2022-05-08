@@ -2,10 +2,11 @@ const author = require('../constants/author');
 const axios = require('axios');
 
 const serachItems = async (req, res, next) => {
-	const query = req.query.q;
-	if (query) {
+	const search = req.query.q;
+	const limit = req.query.limit;
+	if (search) {
 		try { 
-			const queryParams = `?q=${query}&limit=4`;
+			const queryParams = `?q=${search}&limit=${limit}`;
 
 			const searchResponse = await axios.get(encodeURI(`https://api.mercadolibre.com/sites/MLA/search${queryParams}`));
 
