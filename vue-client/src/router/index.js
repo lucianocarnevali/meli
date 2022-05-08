@@ -17,8 +17,8 @@ const routes = [
       },
       {
         path: 'items/:itemId',
-        name: 'ItemView',
-        component: () => import(/* webpackChunkName: "about" */ '../views/ItemView.vue'),
+        name: 'ItemDetailView',
+        component: () => import(/* webpackChunkName: "about" */ '../views/ItemDetailView.vue'),
       }
     ]
   },

@@ -1,7 +1,7 @@
 <template>
   <div class='item-container'>
 		<div class="item-picture-container">
-			<RouterLink  :to="{ name: 'ItemView', params: { itemId: item.id } }" class="profile-link">
+			<RouterLink  :to="{ name: 'ItemDetailView', params: { itemId: item.id } }" class="profile-link">
 				<img class='item-picture' :src="item.picture" />
 			</RouterLink>
 		</div>
@@ -37,7 +37,6 @@ export default {
 	padding: 20px 50px 20px;
 	// box-shadow: 0 3px 13px 1px rgb(0 0 0 / 9%);
 	border-bottom: thin solid #eee;
-	background-color: white;
 	.item-picture-container {
 		width: 160px;
 		height: 160px;

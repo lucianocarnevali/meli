@@ -2,7 +2,7 @@
   <div class='item-container'>
 		<Breadcrumb :category="category" />
 
-		<div class="item-page">
+		<div v-if="item" class="item-page">
 			<div class="item-left-section">
 				<div class="item-picture-container">
 					<img class='item-picture' :src="item.picture" />
@@ -19,7 +19,7 @@
 					{{ item.sold_quantity }} Vendidos
 				</div>
 				<div class="item-title"><h2>{{ item.title }}</h2></div>
-				<div class="item-price">
+				<div v-if="item.price" class="item-price">
 				<span class="currency">{{ item.price.currency }}</span>
 				<span class="integer">{{ item.price.amount }}</span>
 				<span class="decimal">{{ item.price.decimals.toString().padStart(2, '0') }}</span>
@@ -39,7 +39,7 @@
 import Breadcrumb from '@/components/Breadcrumb.vue';
 
 export default {
-  name: 'Item',
+  name: 'ItemDetail',
 	components: { Breadcrumb },
 	props: {
 		item: {

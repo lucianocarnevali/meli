@@ -1,15 +1,15 @@
 <template>
   <div class="item">
-		<Item :item="item" :category="category" />
+		<ItemDetail :item="item" :category="category" />
   </div>
 </template>
 
 <script>
-import Item from '@/components/Item.vue';
+import ItemDetail from '@/components/ItemDetail.vue';
 
 export default {
-  name: 'ItemView',
-	components: { Item },
+  name: 'ItemDetailView',
+	components: { ItemDetail },
   data() {
     return {
       item: {},
