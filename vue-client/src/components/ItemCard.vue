@@ -6,21 +6,15 @@
 			</RouterLink>
 		</div>
 		<div class="item-info">
-
 			<ItemPrice v-if="item.price" :price="item.price" />
-
 			
 			<RouterLink :to="{ name: 'ItemDetailView', params: { itemId: item.id } }" class="title-link">
 				<span>{{ item.title }}</span>
 			</RouterLink>
-			
-
 		</div>
-		<div class="item-location">
-			<span>{{ item.address.state_name }}</span>
-
+		<div class="item-location-container">
+			<span class="item-location">{{ item.address.state_name }}</span>
 		</div>
-
   </div>
 </template>
 
@@ -47,15 +41,25 @@ export default {
 .item-container {
 	display: flex;
 	flex-direction: row;
-	padding: 20px 50px 20px;
+	padding: 10px;
 	// box-shadow: 0 3px 13px 1px rgb(0 0 0 / 9%);
 	border-bottom: thin solid #eee;
 	.item-picture-container {
 		width: 160px;
 		height: 160px;
+		// margin: 0 auto;
 		.item-picture {
-			object-fit: contain;
+			// height: 160px;
 			width: 100%;
+			max-width: 160px;
+			max-height: 160px;
+			align-self: center;
+			justify-self: center;
+			// border-radius: 5px;
+			// box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+			max-height: 100%;
+			height: auto;
+			object-fit: cover;
 		}
 	}
 	.item-info{
@@ -65,6 +69,9 @@ export default {
 			text-decoration: none;
 			color: inherit;
 		}
+	}
+	.item-location-container{	
+		padding: 5px;
 	}
 }
 </style>
