@@ -9,6 +9,7 @@
       <input type='text' 
         class="search-input"
         id='search'
+        @keyup.enter="handleSearch"
         v-model="search"
       />
 
@@ -29,6 +30,13 @@ export default {
     return {
       search: '',
       limit: 4
+    }
+  },
+  methods: {
+    handleSearch() {
+      if (this.search !== this.$route.query.q) {
+        this.$router.push({ name: 'ItemListView', query: { q: this.search, limit: this.limit }});
+      }
     }
   }
 }
