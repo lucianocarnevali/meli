@@ -2,15 +2,19 @@
   <div class='search-box-container'>
     <div class='search-box'>
 
-      <!-- <img src="@/assets/meli-logo.svg" /> -->
+      <RouterLink :to="{ name: 'HomeView' }" class="logo-link">
+        <img src="@/assets/img/meli-logo.png" class="logo" />
+      </RouterLink>
+
       <input type='text' 
         class="search-input"
         id='search'
         v-model="search"
       />
-      <RouterLink  :to="{ name: 'ItemListView', query: { q: search, limit: limit }}" class="search-link">
+
+      <RouterLink :to="{ name: 'ItemListView', query: { q: search, limit: limit }}" class="search-link">
         <span class="search-icon">
-          <img src="@/assets/SearchIcon.svg" />
+          <img src="@/assets/icon/search-icon.svg" />
         </span>
       </RouterLink>
     </div>
@@ -42,12 +46,21 @@ export default {
     max-width: 1024px;
     margin: 0 auto;
     padding: 10px 0;
+    .logo-link {
+      background: transparent;
+      .logo {
+        padding: 0 5px;
+        width: 130px;
+        object-fit: cover;
+        background: transparent;
+      }
+    }
 
     .search-link{
       border-top-right-radius: 2px;
       border-bottom-right-radius: 2px;
       background-color: white;
-
+      height: 30px;
       .search-icon{
         width: 40px;
         height: 30px;
@@ -56,7 +69,7 @@ export default {
         border-bottom-right-radius: 2px;
         border: 0;
         img {
-          margin: 5px;
+          margin: 8px 5px 0 5px;
           background-color: white;
           width: 16px;
           height: 16px;
