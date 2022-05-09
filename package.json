@@ -1,0 +1,25 @@
+{
+  "name": "mercadolibre",
+  "version": "1.0.0",
+  "description": "Mercado Libre - Envíos Gratis en el día",
+  "main": "index.js",
+  "scripts": {
+    "client-install"  : "cd vue-client && npm install",
+    "server-install"  : "cd server && npm install",
+    "install": "concurrently \"npm run server-install\" \"npm run client-install\"",
+    "start": "concurrently \"cd vue-client && npm run serve\" \"cd server && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucianocarnevali/meli.git"
+  },
+  "author": "Luciano Carnevali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucianocarnevali/meli/issues"
+  },
+  "homepage": "https://github.com/lucianocarnevali/meli#readme",
+  "dependencies": {
+    "concurrently": "^7.1.0"
+  }
+}
