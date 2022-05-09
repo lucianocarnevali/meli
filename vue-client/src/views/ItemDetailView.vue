@@ -10,6 +10,18 @@ import ItemDetail from '@/components/ItemDetail.vue';
 export default {
   name: 'ItemDetailView',
 	components: { ItemDetail },
+  metaInfo() {
+    return {
+      title: this.item.title,
+      meta: [
+        {
+          name: 'description', 
+          content: this.item.title
+        },
+      ]
+    }
+  },
+
   data() {
     return {
       item: {},
@@ -26,7 +38,6 @@ export default {
 
   methods: {
     async getItem(itemId) {
-      this.items = [];
       this.category = {};
       try {
         const resItem = await this.$http.items.getItem(itemId);
@@ -37,17 +48,6 @@ export default {
       } catch (err) {
 				console.error(err);
 			}
-    },
-    handleRouteChange() {
-      const queryParams = `?q=${this.$route.query.q}&limit=${this.$route.query.limit}`;
-      if (queryParams) {
-        this.searchItems(queryParams);
-      }
-    }
-  },
-  watch: {
-    $route() {      
-      this.handleRouteChange();
     }
   }
 }

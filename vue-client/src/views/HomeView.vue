@@ -15,7 +15,12 @@ export default {
   name: 'HomeView',
   components: {
     SearchBox
-  }
+  },
+	metaInfo() {
+    return {
+      title: 'Busca y Encuentra',
+    }
+  },
 }
 </script>
 

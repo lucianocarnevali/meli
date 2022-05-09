@@ -10,6 +10,18 @@ import ItemList from '@/components/ItemList.vue'
 export default {
   name: 'ItemListView',
   components: { ItemList },
+  metaInfo() {
+    return {
+      title: this.$route.query.q ? this.$route.query.q : 'Mercadolibre',
+      meta: [
+        {
+          name: 'description', 
+          content: this.category ? this.category.name : ''
+        },
+      ]
+    }
+  },
+
   data() {
     return {
       items: [],
